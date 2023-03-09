@@ -122,9 +122,17 @@ for word in separated_text:
         words_stat[len(word)] = 1
     else:
         words_stat[len(word)] = words_stat[len(word)] + 1
+print('-'*40)
+print(' LEN|  OCCURENCES  |NR.')
+print('-'*40)
 
-for x,y in words_stat.items():
-    z=y*"*"
-    print(f"{x}|{z}")
+sorted_words_stat = sorted(words_stat.items(), key=lambda it: it[0])
+max_occurence = max(words_stat.values())
+
+for x,y in sorted_words_stat:
+    print(f'{x:>4}|{y * "*":{max_occurence}}|{y}')
+    # {x:>4} gives padding from left for printed character
+    # {max occurence} gives padding from right for printed string of stars
+    # y * "*" multiplies character '*' by y, therefore gives a string of character '*' of length y
 
 
